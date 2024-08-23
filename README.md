@@ -1,4 +1,4 @@
-# voyage-project-tier2-expense-splitter
+# voyage-project-tier3-expense-splitter
 
 ## Table of Contents
 
@@ -50,13 +50,15 @@ implement to enhance this app, if time permits.
 
 #### Structure
 
-- [ ] This is a purely frontend application. No backend is required.
+- [ ] This is a full-stack application. Frontend and backend are required.
+- [ ] Integrate Google authentication with database system.
 - [ ] You may use any languages, tools, or libraries you prefer when designing and building this app.
 - [ ] You may **_NOT_** use AI-based solution generators like GitHub Copilot.
 - [ ] Implement cloud storage for storing receipts using one of the providers in the list below or one of your own choice:
     - [Firebase Firestore](https://firebase.google.com/docs/storage/web/upload-files) has free storage buckets for up to 5GB storage, 50k/day download operations, 20k/day upload operations but limited to only one free bucket per project
     - [Amazon S3](https://aws.amazon.com/s3/?did=ft_card&trk=ft_card) offers a 12 months free trial for 5GB, 20k Get requests, 2000 put requests
     - [Cloudinary](https://cloudinary.com/documentation/frontend_sdks) has a free tier for 3 users per account and up to 25GB of storage
+    - [Google Authentication](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid) A detailed guide on how to obtain an API key and perform Google Authentication.
 
 #### Styling
 
@@ -68,7 +70,16 @@ implement to enhance this app, if time permits.
 #### Functionality
 - Overview
 
-  - [ ] Develop a single-page application (SPA) that simulates an expense splitting system.
+  - [ ] Develop a Full Stack application that simulates an expense splitting system.
+
+- Google Authentication and Database Integration
+
+  - [ ] Implement Google Authentication to allow users to securely log in using their Google accounts.
+      - Obtain and configure the Google API key.
+      - Set up OAuth 2.0 to enable Google Sign-In for the application.
+      - Ensure secure handling of authentication tokens and user data.
+      - Implement appropriate user session management, including login and logout functionalities.
+  - [ ] Integrate a database system to store and manage user data and other relevant information.
 
 - Expense Group Management
 
@@ -85,6 +96,12 @@ implement to enhance this app, if time permits.
     - The weight of the contribution should be set to 0 by default (every participant contributes equally)
   - [ ] Users should be able to edit the details of an expense group, except for Group ID
   - [ ] Users should be able to remove a particular expense group
+  - [ ] Generate a Unique Group Link:
+    - The system should automatically generate a unique link for each expense group.
+    - This link can be shared with others to invite them to join the group.
+  - [ ] Invite Participants:
+    - Users can invite participants to the group by sharing the generated link.
+    - Upon receiving the link, participants can join the group by sign in with Google.
 
 - Expense Management
 
@@ -102,17 +119,27 @@ implement to enhance this app, if time permits.
     - Receipt proof
       - Upload a photo/other format of the receipt to the expense group (see details in Receipt section)
   - [ ] User should be able to edit and delete an existing expense (Date should remain Immutable)
+  - [ ] View Expense History:
+      - Users should be able to view a comprehensive history of all expenses.
+      - The history should include details such as the Name of the expense, Date, Amount, Category, Participant contributions, and Receipt proofs.
+      - Users should be able to view individual expense details as well as aggregated summaries.
 
 - Calculations
 
   - [ ] Automatically calculate and display who owes what to whom within the group and taking into account the weighted contributions of a participant or the weighted contribution of a participant to an individual expense
   - [ ] Update calculations in real-time as expenses are added, modified, or deleted
 
+- Complete Expense
+
+  - [ ] The group creator has the exclusive ability to close an expense.
+  - [ ] Closing an expense involves finalizing all contributions, ensuring that no further edits or additions can be made.
+  - [ ] Once closed, the expense is marked as complete.
+  - [ ] The closed expense should be archived, and participants should still be able to view the details in the expense history but cannot make any changes.
+
 - Receipts
   
   - [ ] User creating an expense can choose to upload a proof of expense or a receipt. The receipt can be a photo or a pdf or whatever other format of your choice
   - [ ] The receipt should be available/visible at the group level, as well as at the expense level
-  - [ ] For storage, an external third party can be used from the list available in the Structure section
     
 
 - Summary and Visualization
@@ -133,8 +160,11 @@ implement to enhance this app, if time permits.
 
 - Data Persistence
 
-  - [ ] Implement local storage to save expense group data in the browser
-  
+  - [ ] All expense-related data, including group information, individual expenses, and receipts, is securely stored in a centralized database.
+  - [ ] The database ensures data persistence across user sessions, providing reliable storage and retrieval of all user and expense information.
+
+- Export Functionality
+
   - [ ] Add ability to export data (e.g., PDF, Excel or as a chart)
 
   
@@ -146,11 +176,22 @@ implement to enhance this app, if time permits.
 
 ### Extras (Not Required)
 
+- Google Authentication
+  - [ ] Provide a fallback authentication method in case Google authentication fails.
+
+- Expense Group Management
+  - [ ] The link should be secure and expire after a certain period (configurable) or after the group is closed.
+
 - Multi-currency Support
 
   - [ ] Allow expenses in multiple currencies
 
 ## Acceptance Criteria
+
+- Google Authentication 
+
+  - [ ] Google Authentication is implemented, allowing users to securely log in using their Google accounts.
+  - [ ] Only authenticated users can access and manage expense groups and data.
 
 - Expense Group Management
 
@@ -159,6 +200,9 @@ implement to enhance this app, if time permits.
   - [ ] A participant in an expense group can have a particular weighted contribution to the total amount
   - [ ] An expense group can be edited and deleted
   - [ ] One or more receipt proofs can be consulted 
+  - [ ] A unique link is generated for each group, which can be shared to invite participants.
+  - [ ] Participants can join an expense group via the unique link.
+  - [ ] Only the group creator has the authority to close an expense group, finalizing all contributions.
 
 - Expense Management
 
@@ -174,6 +218,7 @@ implement to enhance this app, if time permits.
   - [ ] Existing expenses can be edited and deleted
   - [ ] Date of expense is automatically captured
   - [ ] The receipt proof of an expense can be consulted
+  - [ ] Users can view a comprehensive history of all expenses.
 
 - Calculations
 
@@ -188,8 +233,8 @@ implement to enhance this app, if time permits.
 
 - Data Persistence
 
-  - [ ] Expense data persists across browser sessions using local storage
-  - [ ] Receipt proofs can be consulted at any moment when viewing the details of an expense or when viewing the details of a group expenses. A receipt proof can be viewed as attached to an expense/expense group and the actual receipt can also be viewed
+  - [ ] All expense data, including group details, expenses, and receipts, is stored in a secure database.
+  - [ ] Receipt proofs are stored in the database and remain accessible even after an expense group is closed.
 
 - Analytics
 
