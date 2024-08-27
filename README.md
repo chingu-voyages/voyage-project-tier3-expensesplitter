@@ -70,7 +70,7 @@ implement to enhance this app, if time permits.
 #### Functionality
 - Overview
 
-  - [ ] Develop a single-page application (SPA) for splitting group expenses.
+  - [ ] Develop a Fullstack application for splitting group expenses.
 
 - Google Authentication and Database Integration
 
